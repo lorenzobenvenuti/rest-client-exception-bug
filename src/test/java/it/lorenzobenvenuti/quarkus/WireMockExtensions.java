@@ -20,6 +20,12 @@ public class WireMockExtensions implements QuarkusTestResourceLifecycleManager {
         wireMockServer.stubFor(get(urlEqualTo("/foo/bar"))
                 .willReturn(aResponse().withStatus(400)));
 
+        wireMockServer.stubFor(get(urlEqualTo("/foo/fizzbuzz"))
+                .willReturn(aResponse()
+                        .withHeader("Content-type", "application/json")
+                        .withBody("{\"value\": \"fizzbuzz\"}")
+                        .withStatus(200)));
+
         return Collections.singletonMap("quarkus.rest-client.foo-client.url", wireMockServer.baseUrl());
     }
 

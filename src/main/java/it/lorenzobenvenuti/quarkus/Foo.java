@@ -12,4 +12,10 @@ public class Foo {
         this.value = value;
     }
 
+    @Override
+    public String toString() {
+        return "Foo{" +
+                "value='" + value + '\'' +
+                '}';
+    }
 }
